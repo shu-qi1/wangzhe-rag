@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>王者万象棋 攻略助手</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- ========== 顶部导航 ========== -->
+    <header class="topbar">
+        <div class="logo">王者万象棋 · 攻略助手</div>
+    </header>
+
+    <!-- ========== 主体 ========== -->
+    <main class="main-container">
+
+
+
+      <!-- 右侧：对话卡片 -->
+<div class="right-panel">
+    <div class="chat-card">
+        <div class="chat-header">AI 攻略助手</div>
+        <div class="chat-body" id="chat-history">
+            <div style="text-align:left; margin:8px 0; color:#333;">
+                <b>AI：</b>你好！我是王者万象棋攻略助手。你可以问我：<br>
+                • 三分倒转流阵容怎么运营？<br>
+                • 新手推荐什么阵容？<br>
+                • 曹操在阵容里是什么作用？<br>
+                输入问题后按回车或点“发送”就行。
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="question" placeholder="输入你的问题...">
+            <button onclick="askQuestion()">发送</button>
+            <button onclick="resetChat()" style="background:#888;">重新开始</button>
+        </div>
+    </div>
+</div>
+
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

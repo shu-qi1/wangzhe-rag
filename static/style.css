@@ -1,0 +1,82 @@
+/* ========== 全局 ========== */
+body {
+    margin: 0;
+    font-family: "Microsoft YaHei", sans-serif;
+    background: url("/static/background.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* ========== 顶部导航 ========== */
+.topbar {
+    padding: 16px 40px;
+    background: transparent;
+}
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1a3a8f;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* ========== 主体 ========== */
+.main-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 80px;
+    height: calc(100vh - 72px);   /* 减去顶部导航高度 */
+    box-sizing: border-box;
+}
+
+/* ========== 右侧：对话卡片 ========== */
+.right-panel {
+    width: 600px;
+    height: 100%;
+}
+
+.chat-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.chat-header {
+    font-weight: bold;
+    color: #1a3a8f;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.chat-body {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    padding-right: 8px;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.chat-input {
+    display: flex;
+    gap: 12px;
+}
+.chat-input input {
+    flex: 1;
+    padding: 14px 18px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+}
+.chat-input button {
+    padding: 14px 32px;
+    background: #1a3a8f;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
