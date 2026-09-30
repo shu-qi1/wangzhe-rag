@@ -21,9 +21,9 @@ Python、LangChain、智谱 GLM-4-Flash、Chroma、Flask、HTML/CSS/JS
 - `step3_qa.py`：RAG 核心逻辑（检索 + 生成）
 - `tools_load_docs.py`：加载文档并分块
 - `tools_build_vector_db.py`：向量化并存入 Chroma
-- `docs/`：攻略文档
-- `static/`：前端样式和脚本
-- `templates/`：HTML 页面
+- `*.txt`：攻略文档（11 篇，放在根目录）
+- `style.css`、`script.js`、`background.png`：前端静态文件
+- `index.html`：HTML 页面
 
 ## 运行方式
 
