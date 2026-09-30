@@ -1,0 +1,8 @@
+langchain
+langchain-community
+langchain-openai
+langchain-classic
+langchain-text-splitters
+chromadb
+flask
+rank_bm25
