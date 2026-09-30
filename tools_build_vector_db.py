@@ -7,13 +7,11 @@ from langchain_community.vectorstores import Chroma
 
 def build_vector_db():
     """加载文档、分块、向量化、存入 Chroma"""
-    docs_folder = "docs"
     all_documents = []
 
-    for filename in os.listdir(docs_folder):
+    for filename in os.listdir("."):
         if filename.endswith(".txt"):
-            filepath = os.path.join(docs_folder, filename)
-            loader = TextLoader(filepath, encoding="utf-8")
+            loader = TextLoader(filename, encoding="utf-8")
             documents = loader.load()
             all_documents.extend(documents)
 

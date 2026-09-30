@@ -8,12 +8,22 @@ if not os.path.exists("./chroma_db"):
     build_vector_db()
     print("向量库构建完成")
 
-from step3_qa import rag_chain
+from step3_qa import rag_chain, LINEUP_KEYWORDS
 
 app = Flask(__name__, template_folder=".", static_folder=".")
 
-# 保存对话历史
 chat_history = []
+current_lineup = None
+
+def extract_lineup_from_text(text):
+    for lineup in LINEUP_KEYWORDS:
+        if lineup in text:
+            return lineup
+    for lineup in LINEUP_KEYWORDS:
+        short = lineup.replace("流", "")
+        if short in text:
+            return lineup
+    return None
 
 @app.route("/style.css")
 def style():
@@ -31,21 +41,22 @@ def background():
 def index():
     return render_template("index.html")
 
-@app.route("/static/<path:filename>")
-def static_files(filename):
-    return send_from_directory(".", filename)
-
 @app.route("/ask", methods=["POST"])
 def ask():
-    global chat_history
+    global chat_history, current_lineup
     data = request.get_json()
     question = data.get("question", "")
     if not question.strip():
         return jsonify({"answer": "请输入问题"})
 
-    if chat_history:
-        last_q, last_a = chat_history[-1]
-        enhanced_question = f"上一轮用户问：{last_q}\n上一轮回答：{last_a}\n\n现在用户说：{question}\n请结合上一轮的上下文回答。"
+    # 检查问题里有没有阵容名
+    new_lineup = extract_lineup_from_text(question)
+    if new_lineup:
+        current_lineup = new_lineup
+
+    # 如果当前有讨论的阵容，拼到问题前面
+    if current_lineup:
+        enhanced_question = f"【当前讨论阵容：{current_lineup}】{question}"
     else:
         enhanced_question = question
 
@@ -62,8 +73,9 @@ def ask():
 
 @app.route("/reset", methods=["POST"])
 def reset():
-    global chat_history
+    global chat_history, current_lineup
     chat_history = []
+    current_lineup = None
     return jsonify({"status": "ok"})
 
 if __name__ == "__main__":
