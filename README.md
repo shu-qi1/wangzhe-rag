@@ -41,6 +41,13 @@ python server.py
 
 4. 浏览器打开 http://127.0.0.1:5000
 
+## 部署
+
+项目包含 Dockerfile，可通过 Docker 部署：
+
+docker build -t wangzhe-rag .
+docker run -p 7860:7860 -e ZHIPU_API_KEY=你的Key wangzhe-rag
+
 ## 使用示例
 
 问：海陆空怎么用？
